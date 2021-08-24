@@ -1,0 +1,171 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+html{
+  font-family: "Open Sans",sans-serif;
+}
+/* Navbar */
+#navbar{
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.75rem;
+  height: 70px;
+}
+#navbar ul{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+#navbar ul li a{
+  padding: 0.5rem;
+}
+
+#navbar ul li a:hover{
+  background: #336ea2;
+  border-radius: 5px;
+}
+
+/* home */
+#home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid gray;
+}
+
+#home img{
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center ;
+  height: 400px;
+  border-radius: 100%;
+}
+
+#home .name h2{
+  margin-bottom: 0.75rem;
+}
+
+#home .name p{
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* aboult */
+#aboult{
+  padding: 1rem;
+  color: #fff;
+}
+#aboult .items{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#aboult .items .item{
+  width: 33%;
+  text-align: center;
+  padding: 0.5rem;
+}
+#aboult .items .item:hover{
+  color: rgb(125, 207, 255);
+}
+
+/* blog */
+#blog{
+  color:#333;
+  padding: 1rem;
+}
+.blogs{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.blogs .blog .blog-image{
+  margin-right:0.5rem;
+  position: relative;
+}
+.blogs .blog .blog-image img{
+  object-fit: cover;
+  object-position: center center;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+.blogs .blog{
+  display: flex;
+  padding: 0.5rem;
+  margin-bottom:0.5rem;
+}
+.blogs .blog .blog-image span{
+  background: rgba(255, 0, 0, 0.822);
+  padding: 0.25rem;
+  border-radius: 5px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.blogs .blog .blog-info .title{
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.blogs .blog .blog-info .description{
+  letter-spacing: 1.2px;
+  margin-bottom: 0.25rem;
+  opacity: 0.6;
+}
+.blogs .blog .blog-info .instructor{
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  opacity: 0.6;
+}
+
+.blogs .blog .blog-info .rating{
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  opacity: 0.6;
+}
+
+/* Contact */
+#contact{
+  color: #fff;
+  padding: 1rem;
+}
+#contact .contact-form{
+ max-width: 700px;
+ margin-left: auto;
+ margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+.form-control{
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1rem;
+  resize: none;
+  border-radius: 10px;
+}
+
+#contact .contact-form ul{
+  list-style-type:none;
+  display: flex;
+  margin-top: 1rem;
+  align-self: center;
+}
+#contact .contact-form ul li a{
+  padding: 0 1rem;
+font-size: 2rem;
+}
+#contact .contact-form ul li a:hover{
+  opacity: 0.8;
+  }

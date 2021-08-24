@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Html5 Form ve Inputs</title>
+</head>
+
+<body>
+  <form action="process.php"> 
+    <!-- Html5 input -->
+    <label for="name">Name</label> <br>
+    <input type="text" id="name" name="name" /> <br> 
+    <label for="email">Email</label> <br>
+    <input type="email" id="email" name="email"><br>
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password"><br>
+    <label for="date">Date</label><br>
+    <input type="date" id="date" name="date"><br>
+    <hr>Gender<br>
+    Male
+    <input type="radio" name="gender" value="male" checked>
+    Femela
+    <input type="radio" name="gender" value="female">
+    Other
+    <input type="radio" name="gender" value="other"><br>
+    <hr>
+    Hobbies<br>
+    Technology
+    <input type="checkbox" name="tech" id="tech" checked>
+    Music
+    <input type="checkbox" name="music" id="music">
+    Art
+    <input type="checkbox" name="art" id="art">
+    <hr>
+    <select name="degree" id="degree">
+      <option value="bachelor">Lisans</option>
+      <option value="msc">Yüksek Lisans</option>
+      <option value="phd" selected>Doktora</option>
+    </select><br>
+    <textarea name="message" id="message" rows="10" cols="30" placeholder="Your Message"></textarea> <br>
+
+    <input type="reset" value="sıfırla">
+    <!-- <button type="submit">Submit</button>
+        <button type="reset">sıfırla</button>
+    -->
+    <input type="submit" value="Submit">
+  </form>
+
+</body>
+
+</html>
