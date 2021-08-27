@@ -1,0 +1,9 @@
+.search_text {
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 18px;
+  outline: none;
+  color: #666;
+  width: 300px;
+  margin-bottom: 20px;
+}
