@@ -14,14 +14,40 @@ const request = new Request('http://localhost:3000/employees')
 const ui = new UI()
 
 eventListeners()
-function eventListeners(){
-  document.addEventListener("DOMContentLoaded",getAllEmployees)
+function eventListeners() {
+  document.addEventListener('DOMContentLoaded', getAllEmployees)
+  form.addEventListener('submit', addEmployee)
 }
 function getAllEmployees() {
-  request.get()
-  .then(employees=>{
-    ui.addAllEmployeeToUI(employees)
-  }).catch(err=>console.log(err))
+  request
+    .get()
+    .then((employees) => {
+      ui.addAllEmployeeToUI(employees)
+    })
+    .catch((err) => console.log(err))
+}
+function addEmployee(e) {
+  const employeeName = nameInput.value.trim()
+  const employeeDepartment = departmentInput.value.trim()
+  const employeeSalary = salaryInput.value.trim()
+  if (
+    employeeName === '' ||
+    employeeDepartment === '' ||
+    employeeSalary === ''
+  ) {
+    alert('Lütfen tüm alanları doldurun')
+  } else {
+    request.post({
+      name: employeeName,
+      department: employeeDepartment,
+      salary: employeeSalary
+    }).then(response=>{
+      ui.addEmployeeToUI(response)
+    })
+  }
+
+  ui.clearInputs()
+  e.preventDefault()
 }
 // request
 //   .get()
