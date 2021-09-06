@@ -1,0 +1,16 @@
+{
+  "employees": [
+    {
+      "name":"ulaş can demirbağ",
+      "department":"bilişim",
+      "salary":4000,
+      "id":1
+    },
+    {
+      "name":"ahmet",
+      "department":"bilişim",
+      "salary":5000,
+      "id":2
+    }
+  ]
+}
