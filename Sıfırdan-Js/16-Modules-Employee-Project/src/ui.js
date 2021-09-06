@@ -44,6 +44,7 @@ export class UI {
   deleteEmployeeFromUI(element){
     element.remove()
   }
+  
   toggleUpdateButton(e){
     if (this.updateButton.style.display==="none") {
       this.updateButton.setAttribute('style','display:block;')
@@ -54,5 +55,12 @@ export class UI {
       this.updateButton.setAttribute('style','display:none;')
       this.clearInputs()
     }
+  }
+
+  updateEmployeeOnUI(data,element){
+    element.children[0].textContent=data.name
+    element.children[1].textContent=data.department
+    element.children[2].textContent=data.salary
+    element.children[3].textContent=data.id
   }
 }

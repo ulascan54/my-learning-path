@@ -8,17 +8,19 @@ const nameInput = document.getElementById('name')
 const departmentInput = document.getElementById('department')
 const salaryInput = document.getElementById('salary')
 const employeesList = document.getElementById('employees')
-const updateEmployeeButton = document.getElementById('update')
+const updateEmployeeB = document.getElementById('update')
 
 const request = new Request('http://localhost:3000/employees')
 const ui = new UI()
-
+let updateArticle = null
 eventListeners()
 function eventListeners() {
   document.addEventListener('DOMContentLoaded', getAllEmployees)
   form.addEventListener('submit', addEmployee)
   employeesList.addEventListener('click', updateOrDelete)
+  updateEmployeeB.addEventListener('click', putEmployee)
 }
+
 function getAllEmployees() {
   request
     .get()
@@ -64,8 +66,15 @@ function updateOrDelete(e) {
 }
 
 function updateEmployee(e) {
-     ui.toggleUpdateButton(e)
- 
+  ui.toggleUpdateButton(e)
+  if (updateArticle === null) {
+    updateArticle = {
+      updateId: e.parentElement.previousElementSibling.textContent,
+      updateParent: e.parentElement.parentElement
+    }
+  } else {
+    updateArticle = null
+  }
 }
 
 function deleteEmployee(e) {
@@ -79,6 +88,22 @@ function deleteEmployee(e) {
       alert(response)
     })
     .catch((e) => console.log(e))
+}
+
+function putEmployee() {
+  if (updateArticle) {
+    const data = {
+      name: nameInput.value.trim(),
+      department: departmentInput.value.trim(),
+      salary: Number(salaryInput.value.trim())
+    }
+    request
+      .put(updateArticle.updateId, data)
+      .then((response) => {
+        ui.updateEmployeeOnUI(response, updateArticle.updateParent)
+      })
+      .catch((err) => console.log(err))
+  }
 }
 
 // request
