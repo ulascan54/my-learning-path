@@ -1,16 +1,22 @@
 {
   "employees": [
     {
-      "name":"ulaş can demirbağ",
-      "department":"bilişim",
-      "salary":4000,
-      "id":1
+      "name": "ulaş can demirbağ",
+      "department": "bilişim",
+      "salary": 4000,
+      "id": 1
     },
     {
-      "name":"ahmet",
-      "department":"bilişim",
-      "salary":5000,
-      "id":2
+      "name": "ahmet",
+      "department": "bilişim",
+      "salary": 5000,
+      "id": 2
+    },
+    {
+      "name": "vesile",
+      "department": "muhasebe",
+      "salary": 6000,
+      "id": 4
     }
   ]
 }
