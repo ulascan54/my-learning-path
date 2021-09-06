@@ -9,6 +9,7 @@ const departmentInput = document.getElementById('department')
 const salaryInput = document.getElementById('salary')
 const employeesList = document.getElementById('employees')
 const updateEmployeeB = document.getElementById('update')
+const search=document.getElementById('search')
 
 const request = new Request('http://localhost:3000/employees')
 const ui = new UI()
@@ -19,6 +20,14 @@ function eventListeners() {
   form.addEventListener('submit', addEmployee)
   employeesList.addEventListener('click', updateOrDelete)
   updateEmployeeB.addEventListener('click', putEmployee)
+  search.addEventListener('input',searchUI)
+}
+function searchUI(e){
+  const serachtext=e.target.value
+  request.get().then(response=>{
+    const filteredEmployee=response.filter(d=>d.name.indexOf(serachtext)!==-1)
+    ui.searchUpdate(filteredEmployee)
+  })
 }
 
 function getAllEmployees() {

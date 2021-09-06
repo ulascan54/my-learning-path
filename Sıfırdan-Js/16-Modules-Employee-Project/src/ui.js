@@ -63,4 +63,20 @@ export class UI {
     element.children[2].textContent=data.salary
     element.children[3].textContent=data.id
   }
+
+  searchUpdate(filteredEmployee){
+    this.employeesList.innerHTML=null
+    filteredEmployee.forEach((element) => {
+      this.employeesList.innerHTML += `
+    <tr>
+        <td>${element.name}</td>
+        <td>${element.department}</td>
+        <td>${element.salary}</td>
+        <td>${element.id}</td>
+        <td><a href="#" id = "update-employee" class= "btn btn-danger">Güncelle</a></td> 
+        <td><a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td>
+    </tr>
+      `
+    })
+  }
 }
