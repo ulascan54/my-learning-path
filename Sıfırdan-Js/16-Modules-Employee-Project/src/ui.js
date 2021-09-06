@@ -40,4 +40,19 @@ export class UI {
     </tr>
       `
   }
+
+  deleteEmployeeFromUI(element){
+    element.remove()
+  }
+  toggleUpdateButton(e){
+    if (this.updateButton.style.display==="none") {
+      this.updateButton.setAttribute('style','display:block;')
+      this.nameInput.value =   e.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+      this.departmentInput.value =  e.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+      this.salaryInput.value =  e.parentElement.previousElementSibling.previousElementSibling.textContent
+    }else{
+      this.updateButton.setAttribute('style','display:none;')
+      this.clearInputs()
+    }
+  }
 }

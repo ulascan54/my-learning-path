@@ -17,6 +17,7 @@ eventListeners()
 function eventListeners() {
   document.addEventListener('DOMContentLoaded', getAllEmployees)
   form.addEventListener('submit', addEmployee)
+  employeesList.addEventListener('click', updateOrDelete)
 }
 function getAllEmployees() {
   request
@@ -37,18 +38,49 @@ function addEmployee(e) {
   ) {
     alert('Lütfen tüm alanları doldurun')
   } else {
-    request.post({
-      name: employeeName,
-      department: employeeDepartment,
-      salary: employeeSalary
-    }).then(response=>{
-      ui.addEmployeeToUI(response)
-    })
+    request
+      .post({
+        name: employeeName,
+        department: employeeDepartment,
+        salary: Number(employeeSalary)
+      })
+      .then((response) => {
+        ui.addEmployeeToUI(response)
+      })
   }
 
   ui.clearInputs()
   e.preventDefault()
 }
+
+function updateOrDelete(e) {
+  if (e.target.id === 'delete-employee') {
+    if (confirm('eminmisiniz ??')) {
+      deleteEmployee(e.target)
+    }
+  } else if (e.target.id === 'update-employee') {
+    updateEmployee(e.target)
+  }
+}
+
+function updateEmployee(e) {
+     ui.toggleUpdateButton(e)
+ 
+}
+
+function deleteEmployee(e) {
+  const id =
+    e.parentElement.previousElementSibling.previousElementSibling.textContent
+  request
+    .delete(id)
+    .then((response) => {
+      ui.deleteEmployeeFromUI(e.parentElement.parentElement)
+      console.log(response)
+      alert(response)
+    })
+    .catch((e) => console.log(e))
+}
+
 // request
 //   .get()
 //   .then((employees) => console.log(employees))
