@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PseudoClass</title>
+</head>
+<style>
+  a{
+    font-size: 24px;
+  }
+  a:hover{
+    color: green;
+  }
+  a:visited{
+    color: black;
+  }
+  a:link{
+    color: red;
+  }
+  a:active{
+    color:blue;
+  }
+  input{
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color:black;
+  }
+  input:focus{
+    outline: 0;
+    border-color:blueviolet;
+    color: red;
+  }
+</style>
+<body>
+  <input type="text" placeholder="Name">
+  <a href="#">This a link</a>
+</body>
+</html>

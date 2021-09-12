@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
+}
+html{
+  font-family: "Open Sans",sans-serif;
+}
+/* text */
+.text-center{
+  text-align: center;
+}
+
+.heading-small{
+  font-size:1.25rem;
+}
+
+.heading-medium{
+  font-size:1.5rem;
+}
+
+.heading-big{
+  font-size:1.75rem;
+}
+
+/* container */
+.container{
+  max-width: 1220px;
+  margin: 0 auto;
+}
