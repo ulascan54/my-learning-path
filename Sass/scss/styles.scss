@@ -1,0 +1,102 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.top-banner {
+  @include banner;
+  @include mediaQuery(600px) {
+    span {
+      font-size: 20px;
+    }
+  }
+}
+
+.alt-banner {
+  @include banner;
+
+  span {
+    text-align: right;
+  }
+}
+
+.nav-bar {
+  background-color: $claretRed;
+
+  ul {
+    width: 100%;
+    @include clearFloat;
+
+    li {
+      float: left;
+      width: (100% / 6);
+
+      a {
+        display: block;
+        padding: 16px;
+        text-align: center;
+        color: $lightGray;
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+#services {
+  margin-bottom: 50px;
+
+  ul {
+    width: 100%;
+    @include clearFloat;
+
+    li {
+      float: left;
+      box-sizing: border-box;
+      text-align: center;
+      width: (100% / 3);
+
+      img {
+        width: 40%;
+        margin: 20px 30%;
+      }
+
+      a {
+        color: $darkGray;
+
+        &:hover {
+          color: $claretRed;
+        }
+      }
+    }
+  }
+}
+
+section h1 {
+  text-align: center;
+  color: $claretRed;
+  font-size: $sectionHeader;
+  margin: 20px;
+}
+
+#projects {
+  @include clearFloat;
+  li {
+    @include mediaQuery(0px, 400px) {
+      @include grid(1, 2%);
+    }
+    @include mediaQuery(401px, 599px) {
+      @include grid(2, 4%);
+    }
+    @include mediaQuery(600px, 900px) {
+      @include grid(3, 1%);
+    }
+    @include mediaQuery(901px) {
+      @include grid(5, 5%);
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <form action="https://httpbin.org/post" method="POST">
+      <input type="hidden" value="s-16" name="product" />
+      <div class="form-row">
+        <label for="name"> İsim</label>
+        <input name="name" id="name" type="text" required placeholder="Ulaş Can Demirbağ"/>
+      </div>
+
+      <div class="form-row">
+        <label for="tel">Telefon</label>
+        <input name="tel" type="tel" id="tel" required />
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input name="email" type="email" id="email" required />
+      </div>
+      <div class="form-row">
+        <label for="mesaj">Mesaj</label>
+        <textarea name="mesaj" id="mesaj"></textarea>
+      </div>
+      <div class="form-row">
+        <label for="city">Şehir</label>
+        <select name="city" id="city">
+          <option value="İstanbul">İstanbul</option>
+          <option value="İzmir" selected>İzmir</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <p>Sevdiğiniz Renk?</p>
+        <div class="radio-container">
+          <label>
+            <input name="color" type="radio" value="Kırmızı" /> Kırmızı
+          </label>
+          <label> <input name="color" type="radio" value="Yeşil" /> Yeşil </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <button type="reset">Sıfırla</button>
+        <button type="submit">Gönder</button>
+      </div>
+    </form>
+  </body>
+</html>

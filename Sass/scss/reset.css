@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  background: #f8f9fb; 
+}
+
+html, body, ul, ol, li, form {
+  margin: 0;
+  padding: 0; 
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0; 
+}
+
+img {
+  border: 0; 
+}
+
+li {
+  list-style: none; 
+}
+
+a {
+  text-decoration: none; 
+}
+
+.wrapper{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 20px;
+}

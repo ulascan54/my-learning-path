@@ -1,0 +1,190 @@
+.top-banner {
+  width: 100%;
+  position: relative;
+  color: #333;
+}
+
+.top-banner .banner-content {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+}
+
+.top-banner img {
+  width: 100%;
+}
+
+.top-banner span {
+  font-size: 25px;
+  text-shadow: #333;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .top-banner span {
+    font-size: 20px;
+  }
+}
+
+.alt-banner {
+  width: 100%;
+  position: relative;
+  color: #333;
+}
+
+.alt-banner .banner-content {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+}
+
+.alt-banner img {
+  width: 100%;
+}
+
+.alt-banner span {
+  font-size: 25px;
+  text-shadow: #333;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.alt-banner span {
+  text-align: right;
+}
+
+.nav-bar {
+  background-color: #A71930;
+}
+
+.nav-bar ul {
+  width: 100%;
+}
+
+.nav-bar ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.nav-bar ul li {
+  float: left;
+  width: 16.66667%;
+}
+
+.nav-bar ul li a {
+  display: block;
+  padding: 16px;
+  text-align: center;
+  color: #eee;
+}
+
+.nav-bar ul li a:hover {
+  color: #000;
+}
+
+#services {
+  margin-bottom: 50px;
+}
+
+#services ul {
+  width: 100%;
+}
+
+#services ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#services ul li {
+  float: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  width: 33.33333%;
+}
+
+#services ul li img {
+  width: 40%;
+  margin: 20px 30%;
+}
+
+#services ul li a {
+  color: #333;
+}
+
+#services ul li a:hover {
+  color: #A71930;
+}
+
+section h1 {
+  text-align: center;
+  color: #A71930;
+  font-size: 30px;
+  margin: 20px;
+}
+
+#projects:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #projects li {
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+  }
+  #projects li:nth-child(1n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 599px) {
+  #projects li {
+    float: left;
+    margin-right: 4%;
+    margin-bottom: 4%;
+    width: 48%;
+  }
+  #projects li:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  #projects li {
+    float: left;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    width: 32.66667%;
+  }
+  #projects li:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  #projects li {
+    float: left;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    width: 16%;
+  }
+  #projects li:nth-child(5n) {
+    margin-right: 0;
+  }
+}
+
+#projects li img {
+  width: 100%;
+}
+/*# sourceMappingURL=styles.css.map */

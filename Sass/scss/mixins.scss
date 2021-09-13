@@ -1,0 +1,52 @@
+@mixin grid($cols, $mrg) {
+  float: left;
+  margin-right: $mrg;
+  margin-bottom: $mrg;
+  width: ((100% - (($cols - 1) * $mrg)) / $cols);
+  &:nth-child(#{$cols}n) {
+    margin-right: 0;
+  }
+}
+
+@mixin banner {
+  width: 100%;
+  position: relative;
+  color: $darkGray;
+  .banner-content {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+  }
+  img {
+    width: 100%;
+  }
+  span {
+    font-size: $bannerHeader;
+    text-shadow: #333;
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 10px;
+  }
+}
+
+@mixin clearFloat {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin mediaQuery($args...) {
+  @if length($args) ==1 {
+    @media screen and (min-width: nth($args,1)) {
+      @content;
+    }
+  }
+  @if length($args) ==2 {
+    @media screen and (min-width: nth($args,1)) and (max-width: nth($args,2)) {
+      @content;
+    }
+  }
+}
