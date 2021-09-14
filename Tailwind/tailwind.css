@@ -6,3 +6,10 @@
         @apply bg-gray-700 px-4 h-12 inline-flex items-center rounded-lg hover:bg-indigo-700 hover:text-white transition-colors
     }
 }
+
+@layer base{
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;800;900&display=swap');
+    html{
+        font-family: 'Montserrat', sans-serif;
+    }
+}
