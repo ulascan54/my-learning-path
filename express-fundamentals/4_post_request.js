@@ -24,32 +24,17 @@ app.post("/users",(req,res,next)=>{
     })
 })
 
-app.put("/users/:id",(req,res,next)=>{
-    const id = parseInt(req.params.id)
-    for(let i =0 ; i<users.length;i++){
-        if(users[i].id ===id){
-            users[i]={
-                ...users[i],
-                ...req.body
-            }
-        }
-    }
+app.put("/users",(req,res,next)=>{
     res.json({
         success:true,
-        data:users
+        data:"Put Request"
     })
 })
 
-app.delete("/users/:id",(req,res,next)=>{
-    const id = parseInt(req.params.id)
-    for(let i =0 ; i<users.length;i++){
-        if(users[i].id ===id){
-            users.splice(i,1)
-        }
-    }
+app.delete("/users",(req,res,next)=>{
     res.json({
         success:true,
-        data:users
+        data:"Delete Request"
     })
 })
 
