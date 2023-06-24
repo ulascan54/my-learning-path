@@ -9,7 +9,9 @@
 .DS_Store
 
 # Proje bağımlılıkları
-*./node_modules/
+*.node_modules
+*node_modules
+node_modules
 /node_modules/
 /bower_components/
 
