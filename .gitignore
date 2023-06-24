@@ -1,1 +1,36 @@
-*node_modules
+# Derleme dosyaları
+*.o
+*.out
+*.exe
+
+# Geçici dosyalar veya yerel yapılandırma dosyaları
+*~
+.*.swp
+.DS_Store
+
+# Proje bağımlılıkları
+*./node_modules/
+/node_modules/
+/bower_components/
+
+# Derleme çıktısı
+/build/
+/dist/
+
+# Ortam dosyaları
+.env
+.env.local
+.env.*.local
+
+# Log dosyaları
+*.log
+
+# Kullanıcı tanımlı ignore dosyaları
+.gitignore
+.gitignore_global
+
+# IDE veya metin düzenleyici özel dosyaları
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
