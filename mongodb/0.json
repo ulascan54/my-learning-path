@@ -1,0 +1,75 @@
+{
+    "name":"Ulaş Can Demirbağ",
+    "students":10000,
+    "rating":4.5,
+    "courses":["python","java","javascript"],
+    "status":"A"
+}
+
+{
+    "name": "Mustafa Murat Coşkun",
+    "students": 10000,
+    "rating": 4.5,
+    "courses": ["Python", "Java", "JavaScript"],
+    "status": "A"
+  }
+  
+  [
+    
+    {
+      "name": "Mert Toker",
+      "students": 10.0,
+      "rating": 4.5,
+      "courses": ["Python", "Java", "C#"],
+      "status": "A"
+    },
+    {
+      "name": "Can Kemer",
+      "students": 15.0,
+      "rating": 4.2,
+      "courses": ["Python", "Java", "JavaScript", "C++"],
+      "status": "A"
+    },
+    {
+      "name": "Turgay Altın",
+      "students": 20.0,
+      "rating": 4.6,
+      "courses": ["Python", "JavaScript", "Kotlin"],
+      "status": "B"
+    }
+  ]
+
+  [
+    
+    {
+      "name": "Laptop",
+      "category": "Electronic",
+      "price": 5000,
+      "quantity": 10
+    },
+    {
+      "name": "Iphone",
+      "category": "Electronic",
+      "price": 4000,
+      "quantity": 5
+    },
+    {
+      "name": "The Tale Of Two Cities",
+      "category": "Book",
+      "price": 20,
+      "quantity": 100
+    },
+    {
+      "name": "The Lord Of The Rings",
+      "category": "Book",
+      "price": 20,
+      "quantity": 1000
+    },
+    {
+      "name": "Bed",
+      "category": "House",
+      "price": 2000,
+      "quantity": 20
+    }
+  ]
+  
