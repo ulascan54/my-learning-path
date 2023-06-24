@@ -17,3 +17,37 @@
 - updateMany({status:"A"},{$set:{student:15000}}) : Statüs değeri A ya eşit olanların verilerin öğrenci sayısını günceller
 - deleteOne({name:"ulaş"}):ismi ulaş olan değeri siler
 - deleteMany({status:"A"}): statusu A olan bütün verileri siler
+
+---
+
+## skip, limit, short metotları
+
+- .find().skip(1): 1. indexten başlayarak tüm kayıtları listeler
+- .find().limit(2): en baştan başlayarak yalnızca 2 kayıt getirir
+- .find().skip(1).limit(2): 1 den başlayarak 2 kayıt getirir
+- .find({},{rating:1}).sort({rating:1}): yalnızca ratingleri getirir ve büyükten küçüğe doğru sıralı şekilde getirir (-1 dersem tam tersini yapar) name:1 dersek te alfabetik olarak sırarlar.
+
+---
+
+## Aggregation
+
+- ```
+  db.products.aggregate([{$group :{_id: "$category", num_products: {$sum:1}}}])
+  ```
+
+  kategoriye göre gruplar ardından num products diye bir alana kaçtane olduklarını yazar o kategöriden ve listeler.
+
+- ```
+  db.products.aggregate([{$group :{_id: "$category", average_price: {$avg:"$price"}}}])
+  ```
+  kategoriye göre gruplar fiyata göre ortalama fiyat çıkarır
+- ```
+   db.products.aggregate([{$group :{_id: "$category", max_price: {$max:"$price"}}}])
+  ```
+
+  kategoriye göre gruplar ve en yüksek fiyatı çıkarır
+
+- ```
+    db.products.aggregate([{$group :{_id: "$category", min_price: {$min:"$price"}}}])
+  ```
+  kategoriye göre gruplar ve en düşük fiyatı çıkarır
