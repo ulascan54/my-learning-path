@@ -1,13 +1,13 @@
 const express = require('express')
-//api/auth
+//api/questions
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.send('Auth Home Page');
+    res.send('questions Home Page');
 })
 
-router.get('/register',(req,res)=>{
-    res.send('Auth register page Page');
+router.get('/delete',(req,res)=>{
+    res.send('questions delete  Page');
 })
 
 module.exports =router
