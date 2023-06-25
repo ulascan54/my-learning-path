@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const  mongoose = require('mongoose')
+const  Schema  = mongoose.Schema;
 
 const UserSchema = new Schema({
     
@@ -9,15 +9,12 @@ const UserSchema = new Schema({
     },
     email:{
         type: String,
-        trim: true,
-        lowercase: true,
+        required: true,
         unique: [true,'Please try different email'],
-        required: 'Email address is required',
-        validate: [validateEmail, 'Please fill a valid email address'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     role: {
-        tpye:String,
+        type:String,
         default:'user',
         enum:['user','admin']
     },
@@ -52,3 +49,9 @@ const UserSchema = new Schema({
         default:false
     }
 });
+
+module.exports = mongoose.model('User',UserSchema);
+// users
+
+
+//user.create
