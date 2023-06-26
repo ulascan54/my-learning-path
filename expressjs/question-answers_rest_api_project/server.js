@@ -14,6 +14,11 @@ connectDatabase()
 
 
 const app=express()
+
+//express -body middleware
+
+app.use(express.json())
+
 const PORT = process.env.PORT;
 
 //localhost:4000/api/questions
