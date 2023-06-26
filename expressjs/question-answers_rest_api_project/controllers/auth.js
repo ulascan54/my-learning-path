@@ -1,8 +1,7 @@
 const User = require('../models/User')
 const CustomError = require('../helpers/error/CustomError')
-const register = async (req,res,next) => {
-    //try catch
-    try{
+const asyncErrorWrapper = require("express-async-handler")
+const register = asyncErrorWrapper (async (req,res,next) => {
         //post data
         const name='Ulaş Can Demirbağ'
         const email='ulas@gmail.com'
@@ -17,11 +16,7 @@ const register = async (req,res,next) => {
             success:true,
             data:user
         });
-    }catch(err){
-        return next(err)
-
-    }
-}
+})
 const errorTest =(req,res,next)=>{
     //question does not exist
     return next( new SyntaxError('CUSTOM ERROR MESSAGE',400))
