@@ -1,5 +1,5 @@
 const User = require('../models/User')
-
+const CustomError = require('../helpers/error/CustomError')
 const register = async (req,res,next) => {
     //try catch
     try{
@@ -22,8 +22,9 @@ const register = async (req,res,next) => {
 
     }
 }
-const errorTest =()=>{
-    throw new Error('bir hata oluştu')
+const errorTest =(req,res,next)=>{
+    //question does not exist
+    return next( new SyntaxError('CUSTOM ERROR MESSAGE',400))
 }
 
 module.exports = {
