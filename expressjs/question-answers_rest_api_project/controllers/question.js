@@ -1,10 +1,9 @@
-const getAllQuestions = (req,res,next) => {
+const getAllQuestions = (req, res, next) => {
     res.status(404).json({
-        success:true
+        success: true,
     });
-}
-
+};
 
 module.exports = {
     getAllQuestions,
-}
+};
