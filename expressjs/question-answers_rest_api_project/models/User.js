@@ -66,7 +66,7 @@ UserSchema.methods.generateJwtFromUser = function () {
 };
 
 UserSchema.pre('save', function (next) {
-  if (this.isModified('password')) {
+  if (!this.isModified('password')) {
     next();
   }
 
