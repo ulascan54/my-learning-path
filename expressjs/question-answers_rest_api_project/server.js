@@ -6,7 +6,7 @@ const customErrorHandler = require('./middlewares/errors/customErrorHandler');
 
 // Enviroment Variables
 dotenv.config({
-    path: './config/.env',
+  path: './config/.env',
 });
 
 // MongoDb Connection
@@ -30,5 +30,5 @@ app.use('/api', routers);
 app.use(customErrorHandler);
 
 app.listen(PORT, () => {
-    console.log(`App started on ${PORT} : ${process.env.NODE_ENV}`);
+  console.log(`App started on ${PORT} : ${process.env.NODE_ENV}`);
 });
