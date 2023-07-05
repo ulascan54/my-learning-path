@@ -7,7 +7,7 @@ const path = require('path');
 
 // Enviroment Variables
 dotenv.config({
-  path: './config/.env',
+    path: './config/.env',
 });
 
 // MongoDb Connection
@@ -34,5 +34,5 @@ app.use(customErrorHandler);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => {
-  console.log(`App started on ${PORT} : ${process.env.NODE_ENV}`);
+    console.log(`App started on ${PORT} : ${process.env.NODE_ENV}`);
 });

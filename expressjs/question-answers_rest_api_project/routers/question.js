@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', getAllQuestions);
 
 router.get('/delete', (req, res) => {
-  res.send('questions delete  Page');
+    res.send('questions delete  Page');
 });
 
 module.exports = router;
