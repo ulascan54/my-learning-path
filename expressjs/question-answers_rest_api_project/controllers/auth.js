@@ -127,15 +127,15 @@ const resetPassword = asyncErrorWrapper(async (req, res, next) => {
     resetPasswordExpire: { $gt: Date.now() },
   });
 
-  if(!user){
-    return next(new CustomError('Invalid Token or Session Expired',404))
+  if (!user) {
+    return next(new CustomError('Invalid Token or Session Expired', 404));
   }
 
-  user.password=password
-  user.resetPasswordToken=undefined
-  user.resetPasswordExpire=undefined
+  user.password = password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
 
-  await user.save()
+  await user.save();
 
   return res.status(200).json({
     success: true,

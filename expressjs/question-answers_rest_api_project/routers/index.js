@@ -7,5 +7,5 @@ const router = express.Router();
 
 router.use('/questions', question);
 router.use('/auth', auth);
-router.use('/users',user)
+router.use('/users', user);
 module.exports = router;
