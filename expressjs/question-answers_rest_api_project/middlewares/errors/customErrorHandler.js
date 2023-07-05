@@ -2,6 +2,10 @@ const CustomError = require('../../helpers/error/CustomError');
 
 const customErrorHandler = (err, req, res, next) => {
   let customError = err;
+  if(err.name==='CastError'){
+    customError=new CustomError('Please provide a valid id', 400)
+  }
+
   if (err.code === 11000) {
     //duplicate key
     customError = new CustomError(
