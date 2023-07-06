@@ -51,7 +51,7 @@ const getQuestionOwnerAccess = astncErrorWrapper(async (req, res, next) => {
     const questionId = req.params.id;
     const question = await Question.findById(questionId);
 
-    if (question.user !== userId) {
+    if (question.user != userId) {
         return next(
             new CustomError('Only owner can handle this operation', 403)
         );
