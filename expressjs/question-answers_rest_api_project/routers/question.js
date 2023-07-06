@@ -6,6 +6,7 @@ const {
     editQuestion,
     deleteQuestion,
     likeQuestion,
+    undoLikeQuestion,
 } = require('../controllers/question');
 const {
     getAccessToRoute,
@@ -19,6 +20,11 @@ const router = express.Router();
 
 router.post('/ask', getAccessToRoute, askNewQuestion);
 router.get('/:id/like', [getAccessToRoute, checkQuestionExist], likeQuestion);
+router.get(
+    '/:id/undo_like',
+    [getAccessToRoute, checkQuestionExist],
+    undoLikeQuestion
+);
 router.get('/', getAllQuestions);
 router.get('/:id', checkQuestionExist, getSingleQuestion);
 router.put(
