@@ -15,6 +15,25 @@ const askNewQuestion = asyncErrorWrapper(async (req, res, next) => {
     });
 });
 
+const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
+    const questions = await Question.find();
+    return res.status(200).json({
+        success: true,
+        data: questions,
+    });
+});
+
+const getSingleQuestion = asyncErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+    const question = await Question.findById(id);
+    return res.status(200).json({
+        success: true,
+        data: question,
+    });
+});
+
 module.exports = {
     askNewQuestion,
+    getAllQuestions,
+    getSingleQuestion,
 };
