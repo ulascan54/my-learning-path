@@ -1,12 +1,9 @@
 const express = require('express');
-const { getAllQuestions } = require('../controllers/question');
+const { askNewQuestion } = require('../controllers/question');
+const { getAccessToRoute } = require('../middlewares/authorization/auth');
 //api/questions
 const router = express.Router();
 
-router.get('/', getAllQuestions);
-
-router.get('/delete', (req, res) => {
-    res.send('questions delete  Page');
-});
+router.post('/ask', getAccessToRoute, askNewQuestion);
 
 module.exports = router;

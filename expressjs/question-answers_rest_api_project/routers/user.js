@@ -1,5 +1,5 @@
 const express = require('express');
-const { getSingleUser,getAllUsers } = require('../controllers/user');
+const { getSingleUser, getAllUsers } = require('../controllers/user');
 const router = express.Router();
 const {
     checkUserExist,
