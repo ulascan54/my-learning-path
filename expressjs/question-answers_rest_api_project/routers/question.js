@@ -18,11 +18,7 @@ const {
 const router = express.Router();
 
 router.post('/ask', getAccessToRoute, askNewQuestion);
-router.get(
-    '/:id/like',
-    [getAccessToRoute, checkQuestionExist, getQuestionOwnerAccess],
-    likeQuestion
-);
+router.get('/:id/like', [getAccessToRoute, checkQuestionExist], likeQuestion);
 router.get('/', getAllQuestions);
 router.get('/:id', checkQuestionExist, getSingleQuestion);
 router.put(

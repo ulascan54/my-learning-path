@@ -61,7 +61,7 @@ const deleteQuestion = asyncErrorWrapper(async (req, res, next) => {
 
 const likeQuestion = asyncErrorWrapper(async (req, res, next) => {
     const { id } = req.params;
-    const question = await Question.findByIdAndDelete(id);
+    const question = await Question.findById(id);
     if (question.likes.includes(req.user.id)) {
         return next(new CustomError('You already liked this question!', 400));
     }
