@@ -10,6 +10,10 @@ const searchHelper = (searchKey, query, req) => {
     return query
 };
 
+
+const populateHelper=(query,population)=>{
+    return query.populate(population)
+}
 module.exports = {
-    searchHelper,
+    searchHelper,populateHelper
 };

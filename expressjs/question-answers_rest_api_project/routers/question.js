@@ -1,5 +1,4 @@
 const express = require('express');
-const Question = require('../models/Question');
 const answer = require('./answer');
 const {
     askNewQuestion,
@@ -29,9 +28,7 @@ router.get(
     [getAccessToRoute, checkQuestionExist],
     undoLikeQuestion
 );
-router.get(
-    '/',
-    questionQueryMiddleware(Question, {
+router.get('/',questionQueryMiddleware(Question, {
         population: {
             path: 'user',
             select: 'name profile_image',
