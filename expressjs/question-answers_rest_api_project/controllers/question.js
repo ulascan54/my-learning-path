@@ -22,14 +22,7 @@ const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
         path: 'user',
         select: 'name profile_image',
     };
-    if (req.query.search) {
-        const searchObject = {};
-
-        const regex = new RegExp(req.query.search, 'i');
-        searchObject['title'] = regex;
-
-        query = query.where(searchObject);
-    }
+ 
     //populate
     if (populate) {
         query = query.populate(populateObject);
@@ -57,17 +50,15 @@ const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
     }
     query = query.skip(startIndex).limit(limit);
 
-    const sortKey= req.query.sortBy
-    if(sortKey == "most-answered"){
-        query = query.sort("-answerCount -createdAt")
+    const sortKey = req.query.sortBy;
+    if (sortKey == 'most-answered') {
+        query = query.sort('-answerCount -createdAt');
     }
-    if(sortKey == "most-liked"){
-        query = query.sort("-likeCount")
+    if (sortKey == 'most-liked') {
+        query = query.sort('-likeCount');
+    } else {
+        query = query.sort('-createdAt');
     }
-    else{
-        query = query.sort("-createdAt")
-    }
-
 
     const questions = await query;
 
