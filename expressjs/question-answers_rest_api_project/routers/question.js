@@ -18,6 +18,7 @@ const {
 } = require('../middlewares/database/databaseErrorHelpers');
 //api/questions,
 const questionQueryMiddleware = require('../middlewares/query/questionQueryMiddleware');
+const answerQueryMiddleware = require('../middlewares/query/answerQueryMiddleware');
 const Question = require('../models/Question');
 const router = express.Router();
 
@@ -38,7 +39,12 @@ router.get(
     }),
     getAllQuestions
 );
-router.get('/:id', checkQuestionExist, getSingleQuestion);
+router.get(
+    '/:id',
+    checkQuestionExist,
+    answerQueryMiddleware(Question),
+    getSingleQuestion
+);
 router.put(
     '/:id/edit',
     [getAccessToRoute, checkQuestionExist, getQuestionOwnerAccess],
