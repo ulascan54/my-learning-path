@@ -5,6 +5,7 @@ const {
     getAllAnswersByQuestion,
     getSingleAnswer,
     editAnswer,
+    deleteAnswer,
 } = require('../controllers/answer');
 const { getAnswerOwnerAccess } = require('../middlewares/authorization/auth');
 const {
@@ -20,6 +21,11 @@ router.put(
     '/:answer_id/edit',
     [checkQuestionAndAnswerExist, getAccessToRoute, getAnswerOwnerAccess],
     editAnswer
+);
+router.delete(
+    '/:answer_id/delete',
+    [checkQuestionAndAnswerExist, getAccessToRoute, getAnswerOwnerAccess],
+    deleteAnswer
 );
 
 module.exports = router;
