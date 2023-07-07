@@ -6,6 +6,8 @@ const {
     getSingleAnswer,
     editAnswer,
     deleteAnswer,
+    likeAnswer,
+    undoLikeAnswer,
 } = require('../controllers/answer');
 const { getAnswerOwnerAccess } = require('../middlewares/authorization/auth');
 const {
@@ -26,6 +28,16 @@ router.delete(
     '/:answer_id/delete',
     [checkQuestionAndAnswerExist, getAccessToRoute, getAnswerOwnerAccess],
     deleteAnswer
+);
+router.get(
+    '/:answer_id/like',
+    [checkQuestionAndAnswerExist, getAccessToRoute],
+    likeAnswer
+);
+router.get(
+    '/:answer_id/undo_like',
+    [checkQuestionAndAnswerExist, getAccessToRoute],
+    undoLikeAnswer
 );
 
 module.exports = router;
