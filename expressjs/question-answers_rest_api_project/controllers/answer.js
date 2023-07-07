@@ -31,4 +31,25 @@ const getAllAnswersByQuestion = asyncErrorWrapper(async (req, res, next) => {
     });
 });
 
-module.exports = { addNewAnswerToQuestion, getAllAnswersByQuestion };
+const getSingleAnswer = asyncErrorWrapper(async (req, res, next) => {
+    const {answer_id} = req.params;
+    const answer = await Answer.findById(answer_id)
+    .populate({
+        path:"question",
+        select:"title",
+    })
+    .populate({
+        path:"user",
+        select:"name profile_image"
+    })
+    return res.status(200).json({
+        success: true,
+        data: answer,
+    });
+});
+
+module.exports = {
+    addNewAnswerToQuestion,
+    getAllAnswersByQuestion,
+    getSingleAnswer,
+};
