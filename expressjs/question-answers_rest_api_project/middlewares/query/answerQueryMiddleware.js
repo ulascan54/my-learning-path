@@ -1,5 +1,8 @@
 const asyncErrorWrapper = require('express-async-handler');
-const { searchHelper, paginationHelper } = require('./queryMiddlewareHelpers');
+const {
+    populateHelper,
+    paginationHelper,
+} = require('./queryMiddlewareHelpers');
 
 const answerQueryMiddleware = function (model, options) {
     return asyncErrorWrapper(async function (req, res, next) {
@@ -15,6 +18,8 @@ const answerQueryMiddleware = function (model, options) {
         let queryObject = {};
         queryObject[arrayName] = { $slice: [startIndex, limit] };
         let query = model.find({ _id: id }, queryObject);
+
+        query = populateHelper(query, options.population);
 
         const queryResults = await query;
 

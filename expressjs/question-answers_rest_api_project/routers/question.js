@@ -42,7 +42,18 @@ router.get(
 router.get(
     '/:id',
     checkQuestionExist,
-    answerQueryMiddleware(Question),
+    answerQueryMiddleware(Question, {
+        population: [
+            {
+                path: 'user',
+                select: 'name profile_image',
+            },
+            {
+                path: 'answers',
+                select: 'content',
+            },
+        ],
+    }),
     getSingleQuestion
 );
 router.put(
