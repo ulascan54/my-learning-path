@@ -1,5 +1,5 @@
 const asyncErrorWrapper = require('express-async-handler');
-const { searchHelper,populateHelper } = require('./queryMiddlewareHelpers');
+const { searchHelper,populateHelper ,questionSortHelper} = require('./queryMiddlewareHelpers');
 
 const questionQueryMiddleware = function (model, options) {
     return asyncErrorWrapper(async function (req, res, next) {
@@ -10,6 +10,9 @@ const questionQueryMiddleware = function (model, options) {
         if(options && options.population){
             query = populateHelper(query,options.population)
         }
+
+        query = questionSortHelper(query,req)
+
     });
 };
 
