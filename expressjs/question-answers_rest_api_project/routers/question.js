@@ -28,7 +28,9 @@ router.get(
     [getAccessToRoute, checkQuestionExist],
     undoLikeQuestion
 );
-router.get('/',questionQueryMiddleware(Question, {
+router.get(
+    '/',
+    questionQueryMiddleware(Question, {
         population: {
             path: 'user',
             select: 'name profile_image',

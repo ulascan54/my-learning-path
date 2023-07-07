@@ -16,65 +16,7 @@ const askNewQuestion = asyncErrorWrapper(async (req, res, next) => {
 });
 
 const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
-    let query = Question.find();
-    const populate = true;
-    const populateObject = {
-        path: 'user',
-        select: 'name profile_image',
-    };
-    if (req.query.search) {
-        const searchObject = {};
-
-        const regex = new RegExp(req.query.search, 'i');
-        searchObject['title'] = regex;
-
-        query = query.where(searchObject);
-    }
-    //populate
-    if (populate) {
-        query = query.populate(populateObject);
-    }
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 5;
-
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-
-    const papignation = {};
-    const total = await Question.countDocuments();
-    if (startIndex > 0) {
-        papignation.previous = {
-            page: page - 1,
-            limit: limit,
-        };
-    }
-
-    if (endIndex < total) {
-        papignation.next = {
-            page: page + 1,
-            limit: limit,
-        };
-    }
-    query = query.skip(startIndex).limit(limit);
-
-    const sortKey = req.query.sortBy;
-    if (sortKey == 'most-answered') {
-        query = query.sort('-answerCount -createdAt');
-    }
-    if (sortKey == 'most-liked') {
-        query = query.sort('-likeCount');
-    } else {
-        query = query.sort('-createdAt');
-    }
-
-    const questions = await query;
-
-    return res.status(200).json({
-        success: true,
-        count: questions.length,
-        papignation: papignation,
-        data: questions,
-    });
+    return res.status(200).json(res.queryResults);
 });
 
 const getSingleQuestion = asyncErrorWrapper(async (req, res, next) => {
