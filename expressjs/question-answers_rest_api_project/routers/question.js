@@ -39,7 +39,7 @@ router.delete(
     deleteQuestion
 );
 
-router.use('/:id/answers',checkQuestionExist,answer)
+router.use('/:question_id/answers',checkQuestionExist,answer)
 
 
 module.exports = router;
