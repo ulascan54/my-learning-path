@@ -22,7 +22,6 @@ const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
         path: 'user',
         select: 'name profile_image',
     };
-    //search
     if (req.query.search) {
         const searchObject = {};
 
@@ -35,14 +34,9 @@ const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
     if (populate) {
         query = query.populate(populateObject);
     }
-    //pagination
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
 
-    // 1 2 3 4 5 6 7 8 9 10
-    // skip (2)
-    // limit(2)
-    // end()
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
@@ -61,13 +55,13 @@ const getAllQuestions = asyncErrorWrapper(async (req, res, next) => {
             limit: limit,
         };
     }
-    query = query.skip(startIndex).limit(limit)
+    query = query.skip(startIndex).limit(limit);
 
     const questions = await query;
 
     return res.status(200).json({
         success: true,
-        count:questions.length,
+        count: questions.length,
         papignation: papignation,
         data: questions,
     });
@@ -117,6 +111,7 @@ const likeQuestion = asyncErrorWrapper(async (req, res, next) => {
     }
 
     question.likes.push(req.user.id);
+    question.likeCount = question.likes.length;
     await question.save();
 
     return res.status(200).json({
@@ -140,6 +135,7 @@ const undoLikeQuestion = asyncErrorWrapper(async (req, res, next) => {
     const index = question.likes.indexOf(req.user.id);
 
     question.likes.splice(index, 1);
+    question.likeCount = question.likes.length;
 
     await question.save();
 
