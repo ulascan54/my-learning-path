@@ -6,7 +6,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <header>headaer</header>
       <body>{children}</body>
+      <footer>footer</footer>
     </html>
   )
 }
