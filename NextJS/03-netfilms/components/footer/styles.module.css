@@ -1,0 +1,14 @@
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer a{
+  text-decoration: none;
+  color: #fafafa;
+}
+
+.footer a:hover{
+  text-decoration: underline;
+}
