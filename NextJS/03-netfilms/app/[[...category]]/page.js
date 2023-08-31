@@ -2,7 +2,12 @@ import HomeContainer from "@/containers/home"
 
 import Movies from "@/mocks/movies.json"
 
-function HomePage({ params }) {
+async function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+async function HomePage({ params }) {
+  await delay(2000)
+
   let selectedCategory
   console.log(params.category)
   if (params.category !== undefined) {
