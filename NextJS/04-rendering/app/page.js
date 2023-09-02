@@ -1,17 +1,25 @@
 "use client"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Button from "./button"
-// import ButtonC from "@/components/button"
 
 function Home() {
+  const [message, setMessage] = useState("initial")
   useEffect(() => {
+    setMessage("use effect manipüle etti")
     console.log("use effect")
   }, [])
   console.log("HomePage")
   return (
     <div>
+      <button
+        onClick={() => {
+          setMessage("adece")
+        }}
+      >
+        set
+      </button>
       <Button />
-      {/* <ButtonC /> */}
+      {message}
     </div>
   )
 }
