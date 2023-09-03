@@ -10,6 +10,8 @@ function Loading() {
       <FeatureMovieLoading />
       <CategoriesLoading />
       <MoviesSectionLoading />
+      <MoviesSectionLoading />
+      <MoviesSectionLoading />
     </div>
   )
 }
