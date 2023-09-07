@@ -5,50 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study SoC</title>
     <style>
-        label{
-            font-size: 18pt;
-            font-family: Arial;
-        }
-        span{
-            font-size: 24pt;
-            border: solid 3px red;
-            background-color: aqua;
-        }
+        @import "css/counter.css";
     </style>
-    <script type="text/javascript">
-        // JS: 1) Functional programming (Core lang. feature)
-        // 2) Asynchronous Functions (Core lang. feature)
-        // 3) Event-Driven Programming (Core lang. feature)
-        // 4) Object-Oriented Programming (Core lang. feature)
-        // 5) Reactive Programming (Library -> Angular/Vue/KO),(Backend (RxJs))
-        class App { //es6
-            constructor(){
-                this.counter=0;
-                this.update = this.update.bind(this)
-                this.init = this.init.bind(this)
-            }
-            init(){
-                this.spanCounter = document.getElementById("counter")
-                window.setInterval(this.update,1000)
-            }
-            update(){
-                this.counter++;
-                this.spanCounter.innerText = this.counter
-
-            }
-        }
-        function app(){
-            let counter = 0
-            let spanCounter = document.getElementsByTagName("span")[0]
-
-            setInterval(() => {
-                counter ++
-                spanCounter.innerText = counter
-            }, 1000);
-        }
-        let application = new App()
-        window.onload = application.init;
-    </script>
+    <script type="text/javascript" src="js/counter.js"></script>
+        
 </head>
 <body>
     <div>

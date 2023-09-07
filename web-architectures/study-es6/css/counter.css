@@ -1,0 +1,10 @@
+
+label{
+    font-size: 18pt;
+    font-family: Arial;
+}
+span{
+    font-size: 24pt;
+    border: solid 3px red;
+    background-color: aqua;
+}
