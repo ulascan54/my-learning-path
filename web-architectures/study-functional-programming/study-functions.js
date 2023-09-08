@@ -41,3 +41,15 @@ console.log(fun(3, 2, 1, 0))
 console.log(gun(3, 2, 1, 0))
 Number.isNaN(fun())
 is_nan(fun())
+
+function tun(o) {
+  //object -> single parameter
+  return o.x * o.y + o.z
+}
+
+//istenilen sırada verilebilir.
+tun({
+  x: 1,
+  z: 3,
+  y: 2,
+})
