@@ -10,6 +10,7 @@ class Customer {
   }
   // second method for reference
   lambdaSayHello = () => {
+    // automatically binds to this
     console.log(`Hello, ${this.fullname} !!`)
   }
 }
