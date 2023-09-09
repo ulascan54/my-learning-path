@@ -55,12 +55,11 @@ class Application {
     }
   }
 }
-let model = new GameViewModel()
 
+let model = new GameViewModel()
 window.onload = () => {
   //Document is ready !
   // event-triggered
-  let model = new GameViewModel()
   let application = new Application(model)
   //View
 }

@@ -16,6 +16,7 @@ class GameViewModel {
   }
 
   createSecret = () => {
+    console.log(this.secret)
     let digits = []
     digits.push(this.createRandomDigit(1, 9))
     while (digits.length < this.gameLevel) {
@@ -31,15 +32,27 @@ class GameViewModel {
   }
 
   play(guess = 123) {
-    console.log(this.secret)
     guess = Number(guess) // 549
     this.tries++
     if (guess === this.secret) {
       this.gameLevel++
-      // TODO: check whether game is over!
-      this.init()
+      //*: check whether game is over!
+      if (this.gameLevel > 10) {
+        this.gameLevel = 3
+        this.init()
+      } else {
+        this.init()
+      }
     } else {
-      // TODO: check whether tries is over 10
+      //*: check whether tries is over 10
+      if (this.tries > 5 + this.gameLevel * 3) {
+        let temp = this.secret
+        this.init()
+        this.moves.push(
+          new Move("Secret is :" + temp, "Game is Over! You Lose :(")
+        )
+        return
+      }
       let message = this.createMessage(this.secret, guess)
       this.moves.push(new Move(guess, message))
     }
