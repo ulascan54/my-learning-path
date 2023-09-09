@@ -24,20 +24,26 @@ class Application {
   }
 
   updateView = () => {
-    // view model -- dom api --> view
+    // ViewModel -- DOM API --> View
     this.tries.innerText = this.viewModel.tries
     this.gameLevel.innerText = this.viewModel.gameLevel
     this.emptyElement(this.history)
     for (let move of this.viewModel.moves) {
-      let tr = this.history.insertRow()
-      let cellGuess = tr.insertCell(0)
-      let cellMessage = tr.insertCell(1)
-      cellGuess.appendChild(document.createTextNode(move.guess))
-      cellMessage.appendChild(document.createTextNode(move.message))
+      //   let tr = this.history.insertRow()
+      //   let cellGuess = tr.insertCell(0)
+      //   let cellMessage = tr.insertCell(1)
+      //   cellGuess.appendChild(document.createTextNode(move.guess))
+      //   cellMessage.appendChild(document.createTextNode(move.message))
+      this.history.innerHTML += `
+            <tr>
+                <td>${move.guess}</td>
+                <td>${move.message}</td>
+            </tr>
+        `
     }
   }
 
-  emptyElement = (element) => {
+  emptyElement(element) {
     let node = element
     while (element.hasChildNodes()) {
       if (node.hasChildNodes()) {

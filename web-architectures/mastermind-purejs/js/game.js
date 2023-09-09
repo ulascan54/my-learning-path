@@ -31,6 +31,7 @@ class GameViewModel {
   }
 
   play(guess = 123) {
+    console.log(this.secret)
     guess = Number(guess) // 549
     this.tries++
     if (guess === this.secret) {
@@ -59,10 +60,10 @@ class GameViewModel {
     let stringGuess = guess.toString()
     let perfectMatch = 0
     let partialMatch = 0
-    for (let i = 0; i < stringSecret.length; i++) {
+    for (let i = 0; i < stringSecret.length; ++i) {
       let s = stringSecret.charAt(i)
-      for (let j = 0; j < stringGuess.length; j++) {
-        let g = stringGuess.charAt(i)
+      for (let j = 0; j < stringGuess.length; ++j) {
+        let g = stringGuess.charAt(j)
         if (s === g) {
           if (i === j) {
             perfectMatch++
