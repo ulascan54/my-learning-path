@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    @apply bg-black text-white
+}
+
+/*
+sol sidebar = 275px
+sağ sidebar = 350px
+content = auto
+witdh =1265px
+*/
