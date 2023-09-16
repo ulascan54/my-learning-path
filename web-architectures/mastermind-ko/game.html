@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mastermind (jQuery)</title>
+    <script src="js/lib/knockout-3.5.1.debug.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/application.js"></script>
+    <!--
+        Game Level :3
+        Secret: 549
+        Player: 123 -> "No Match"
+        Player: 456 -> "-2"
+        Player: 574 -> "-1+1"
+        Player: 574 -> "+2"
+        Player: 579 -> "You win !!"
+
+        Game level :4 
+        secret: 3615
+        ........
+        9 Level a kadar sürer 
+    -->
+    <!-- 
+        view: game.html + game.css
+        A     UI structure  Style
+        | 
+        V     Controller -> application.js -> iki yapıyı birbirine bağlar tutkal gibi -> bunu jquery (write less do more) API İLE YAPAR
+        viewmodel: game.js
+     -->
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>Game Level:</td>
+                <td><span id="gamelevel">3</span></td>
+            </tr>
+            <tr>
+                <td>Tries:</td>
+                <td><span id="tries">0</span></td>
+            </tr>
+            <tr>
+                <td>Guess:</td>
+                <td>
+                    <input id="guess" type="text" value="123"/>
+                    <button id="play">Play</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Guess</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody id="moves">
+        </tbody>
+    </table>
+    
+</body>
+</html>
