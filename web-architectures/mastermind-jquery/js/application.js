@@ -1,65 +1,44 @@
 class Application {
   constructor(viewModel) {
     //dependency injection
-    // #region view
     this.viewModel = viewModel
-    this.tries = document.querySelector("#tries")
-    this.gameLevel = document.querySelector("#gamelevel")
-    this.guess = document.querySelector("#guess")
-    this.playButton = document.querySelector("#play")
-    this.history = document.querySelector("#moves")
+    // #region view
+    this.tries = $("#tries")
+    this.gameLevel = $("#gamelevel")
+    this.guess = $("#guess")
+    this.playButton = $("#play")
+    this.history = $("#moves")
     // #endregion view
 
     // #region event listeners
-    this.playButton.addEventListener(
-      "click",
-      () => {
-        let guess = this.guess.value
-        this.viewModel.play(guess)
-        this.updateView()
-      },
-      false
-    )
+    this.playButton.click(() => {
+      //Callback function
+      this.viewModel.play(this.guess.val())
+      this.updateView()
+    })
     // #endregion event listeners
   }
 
   updateView = () => {
-    // ViewModel -- DOM API --> View
-    this.tries.innerText = this.viewModel.tries
-    this.gameLevel.innerText = this.viewModel.gameLevel
-    this.emptyElement(this.history)
+    // ViewModel -- jQuery --> View
+    this.tries.text(this.viewModel.tries)
+    this.gameLevel.text(this.viewModel.gameLevel)
+    this.history.empty()
     for (let move of this.viewModel.moves) {
-      //   let tr = this.history.insertRow()
-      //   let cellGuess = tr.insertCell(0)
-      //   let cellMessage = tr.insertCell(1)
-      //   cellGuess.appendChild(document.createTextNode(move.guess))
-      //   cellMessage.appendChild(document.createTextNode(move.message))
-      this.history.innerHTML += `
-            <tr>
-                <td>${move.guess}</td>
-                <td>${move.message}</td>
-            </tr>
-        `
-    }
-  }
-
-  emptyElement(element) {
-    let node = element
-    while (element.hasChildNodes()) {
-      if (node.hasChildNodes()) {
-        node = node.lastChild
-      } else {
-        node = node.parentNode
-        node.removeChild(node.lastChild)
-      }
+      let tr = `  <tr>
+                    <td>${move.guess}</td>
+                    <td>${move.message}</td>
+                  </tr>`
+      this.history.append(tr)
     }
   }
 }
 
 let model = new GameViewModel()
-window.onload = () => {
+$(document).ready(() => {
+  //event-triggered -> Callback function
   //Document is ready !
   // event-triggered
   let application = new Application(model)
   //View
-}
+})
