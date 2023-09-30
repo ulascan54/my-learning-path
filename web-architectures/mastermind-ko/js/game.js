@@ -6,12 +6,17 @@ class Move {
 }
 
 class GameViewModel {
+  //MVC architecturel pattern -> design pattern -> observer
+  //KO library: 2-way binding(declarative)
+  //           reactive library -> UI
+  // Model-view(observer)(html-> declarative: "data-bind" )<-KO->viewmodel (observer) (mvvm)
   constructor() {
     // #region fields
-    this.tries = 0
-    this.gameLevel = 3
+    this.tries = ko.observable(0)
+    this.guess = ko.observable(123)
+    this.gameLevel = ko.observable(3)
     this.secret = this.createSecret()
-    this.moves = []
+    this.moves = ko.observable([])
     //#endregion
   }
 
@@ -31,21 +36,22 @@ class GameViewModel {
     return digits.reduce((number, digit) => 10 * number + digit, 0)
   }
 
-  play(guess = 123) {
-    guess = Number(guess) // 549
-    this.tries++
-    if (guess === this.secret) {
-      this.gameLevel++
+  play() {
+    this.guess(Number(this.guess))
+    this.tries(this.tries() + 1)
+    if (this.guess() === this.secret) {
+      this.gameLevel(this.gameLevel() + 1)
       //*: check whether game is over!
-      if (this.gameLevel > 10) {
-        this.gameLevel = 3
+      if (this.gameLevel() > 10) {
+        this.gameLevel(3)
         this.init()
+        this.moves.push(new Move("Game is over !", "You win :)"))
       } else {
         this.init()
       }
     } else {
       //*: check whether tries is over 10
-      if (this.tries > 5 + this.gameLevel * 3) {
+      if (this.tries() > 5 + this.gameLevel() * 3) {
         let temp = this.secret
         this.init()
         this.moves.push(
@@ -53,8 +59,8 @@ class GameViewModel {
         )
         return
       }
-      let message = this.createMessage(this.secret, guess)
-      this.moves.push(new Move(guess, message))
+      let message = this.createMessage(this.secret, this.guess())
+      this.moves.push(new Move(this.guess(), message))
     }
   }
 
@@ -63,9 +69,9 @@ class GameViewModel {
   }
 
   init = () => {
-    this.moves = []
+    this.moves([])
     this.secret = this.createSecret()
-    this.tries = 0
+    this.tries(0)
   }
 
   createMessage = (secret, guess) => {
