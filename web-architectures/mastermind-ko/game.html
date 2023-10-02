@@ -35,17 +35,17 @@
         <tbody>
             <tr>
                 <td>Game Level:</td>
-                <td><span id="gamelevel">3</span></td>
+                <td><span id="gamelevel" data-bind="text: gameLevel">3</span></td>
             </tr>
             <tr>
                 <td>Tries:</td>
-                <td><span id="tries">0</span></td>
+                <td><span id="tries" data-bind="text: tries"></span></td>
             </tr>
             <tr>
                 <td>Guess:</td>
                 <td>
-                    <input id="guess" type="text" value="123"/>
-                    <button id="play">Play</button>
+                    <input id="guess" type="text" data-bind="value: guess"/>
+                    <button id="play" data-bind="click: play">Play</button>
                 </td>
             </tr>
         </tbody>
@@ -57,7 +57,11 @@
                 <th>Message</th>
             </tr>
         </thead>
-        <tbody id="moves">
+        <tbody id="moves" data-bind="foreach: {data: moves, as: 'move'}">
+            <tr>
+                <td data-bind="text: move.guess"></td>
+                <td data-bind="text: move.message"></td>
+            </tr>
         </tbody>
     </table>
     

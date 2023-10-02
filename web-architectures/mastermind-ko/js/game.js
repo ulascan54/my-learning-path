@@ -16,47 +16,27 @@ class GameViewModel {
     this.guess = ko.observable(123)
     this.gameLevel = ko.observable(3)
     this.secret = this.createSecret()
-    this.moves = ko.observable([])
+    this.moves = ko.observableArray([])
     //#endregion
   }
 
-  createSecret = () => {
-    console.log(this.secret)
-    let digits = []
-    digits.push(this.createRandomDigit(1, 9))
-    while (digits.length < this.gameLevel) {
-      let digit = this.createRandomDigit(0, 9)
-      if (!digits.includes(digit)) digits.push(digit)
-    }
-    // let number = 0
-    // for (let digit of  digits) {
-    //   number = 10 * number + digit
-    // }
-    // return number
-    return digits.reduce((number, digit) => 10 * number + digit, 0)
-  }
-
   play() {
-    this.guess(Number(this.guess))
+    this.guess(Number(this.guess()))
     this.tries(this.tries() + 1)
     if (this.guess() === this.secret) {
       this.gameLevel(this.gameLevel() + 1)
-      //*: check whether game is over!
       if (this.gameLevel() > 10) {
         this.gameLevel(3)
         this.init()
-        this.moves.push(new Move("Game is over !", "You win :)"))
+        this.moves.push(new Move("Game is over!", "You win!"))
       } else {
         this.init()
       }
     } else {
-      //*: check whether tries is over 10
-      if (this.tries() > 5 + this.gameLevel() * 3) {
+      if (this.tries() > 16) {
         let temp = this.secret
         this.init()
-        this.moves.push(
-          new Move("Secret is :" + temp, "Game is Over! You Lose :(")
-        )
+        this.moves.push(new Move(temp, "You lose!"))
         return
       }
       let message = this.createMessage(this.secret, this.guess())
@@ -64,17 +44,34 @@ class GameViewModel {
     }
   }
 
-  createRandomDigit = (max, min) => {
+  createSecret() {
+    let digits = [] // [5, 4, 9] -> 549
+    digits.push(this.createRandomDigit(1, 9))
+    while (digits.length < this.gameLevel) {
+      let digit = this.createRandomDigit(0, 9)
+      if (!digits.includes(digit)) digits.push(digit)
+    }
+    /*
+        let number = 0;
+        for (let digit of digits){
+            number = 10 * number + digit ;
+        }
+        return number;
+        */
+    return digits.reduce((number, digit) => 10 * number + digit, 0)
+  }
+
+  createRandomDigit(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
   }
 
-  init = () => {
+  init() {
     this.moves([])
     this.secret = this.createSecret()
     this.tries(0)
   }
 
-  createMessage = (secret, guess) => {
+  createMessage(secret, guess) {
     let stringSecret = secret.toString()
     let stringGuess = guess.toString()
     let perfectMatch = 0
@@ -95,12 +92,11 @@ class GameViewModel {
     return this.createMessageFromMatches(perfectMatch, partialMatch)
   }
 
-  createMessageFromMatches = (perfectMatch, partialMatch) => {
-    if (perfectMatch === 0 && partialMatch === 0) return "No match :("
-    let message = ""
+  createMessageFromMatches(perfectMatch, partialMatch) {
+    if (perfectMatch === 0 && partialMatch === 0) return "No match"
+    let message = "" // empty string
     if (partialMatch > 0) message = `-${partialMatch}`
-    if (perfectMatch > 0) message += `+${perfectMatch}`
-
+    if (perfectMatch > 0) message = message + `+${perfectMatch}`
     return message
   }
 }
