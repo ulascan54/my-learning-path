@@ -5,7 +5,8 @@
     "main": "crm-microservice.js",
     "scripts": {
         "service":"node crm-microservice.js",
-        "rest-client":"node study-rest-over-http-client.js"
+        "rest-client":"node study-rest-over-http-client.js",
+        "ws-client":"node study-websocket-client.js"
     },
     "dependencies": {
         "node-fetch":"2.6.1",
