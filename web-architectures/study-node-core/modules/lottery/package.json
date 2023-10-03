@@ -1,0 +1,6 @@
+{
+    "name": "lottery",
+    "version": "1.0.0",
+    "main": "lib/lottery.js",
+    "dependencies": {}
+}

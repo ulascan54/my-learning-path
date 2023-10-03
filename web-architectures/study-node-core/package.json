@@ -6,12 +6,12 @@
     "scripts": {
         "service":"node crm-microservice.js",
         "rest-client":"node study-rest-over-http-client.js",
-        "ws-client":"node study-websocket-client.js"
+        "ws-client":"node study-websocket-client.js",
+        "lottery-service":"node lottery-service.js"
     },
     "dependencies": {
         "node-fetch":"2.6.1",
         "ws":"7.4.4"
-
     },
     "description": "this project studies the core features of nodejs",
     "keywords": ["package.json","nodejs architecture"],
