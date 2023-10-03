@@ -1,0 +1,18 @@
+{
+    "name": "study-node-core",
+    "version": "1.0.0",
+    "author": "Ulaş Can <ulascandemirbag@gmail.com>",
+    "main": "crm-microservice.js",
+    "scripts": {
+        "service":"node crm-microservice.js",
+        "rest-client":"node study-rest-over-http-client.js"
+    },
+    "dependencies": {
+        "node-fetch":"2.6.1",
+        "ws":"7.4.4"
+
+    },
+    "description": "this project studies the core features of nodejs",
+    "keywords": ["package.json","nodejs architecture"],
+    "license":"MIT"
+}
