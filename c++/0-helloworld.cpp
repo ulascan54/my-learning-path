@@ -2,13 +2,12 @@
 
 using namespace std;
 
-
-int main(){
+int main()
+{
 
     cout << "Merhaba Dünya\n";
-    cout << "Merhaba Dünya 2"<< endl;
+    cout << "Merhaba Dünya 2" << endl;
     cout << "Merhaba Dünya 2";
-
 
     return 0;
 }
