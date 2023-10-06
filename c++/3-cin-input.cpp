@@ -4,6 +4,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    
     int x, y, z;
     cout << "1.sayiyi giriniz" << endl;
     cin >> x;

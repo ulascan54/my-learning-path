@@ -10,6 +10,7 @@ int main(int argc, char const *argv[])
 
         artttırma ++
         azaltma --
+
     */
 
     int n1 = 10, n2 = 4;
