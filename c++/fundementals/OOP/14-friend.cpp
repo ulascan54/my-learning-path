@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 class Employee
 {
 private:
@@ -16,6 +17,19 @@ public:
     }
 
     friend void showInfos(Employee employee);
+    friend class Test;
+};
+
+class Test
+{
+public:
+    static void showInfos(Employee employee)
+    {
+
+        cout << employee.name << endl;
+        cout << employee.age << endl;
+        cout << employee.salary << endl;
+    }
 };
 
 void showInfos(Employee employee)
@@ -27,6 +41,9 @@ void showInfos(Employee employee)
 
 int main()
 {
+    Employee employee("Ulaş", 33, 2000);
 
+    showInfos(employee);
+    Test::showInfos(employee);
     return 0;
 }
