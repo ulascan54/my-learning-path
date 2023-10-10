@@ -13,6 +13,7 @@ bool isEnd();
 
 int main()
 {
+
     system("clear");
     bool game = true;
     int n = 0;
@@ -21,6 +22,7 @@ int main()
     while (game)
     {
         Input();
+        TogglePlayer();
         Draw();
         game = isEnd();
         n++;
@@ -191,7 +193,6 @@ void Input()
     default:
         break;
     }
-    TogglePlayer();
 }
 
 bool isEnd()
@@ -287,6 +288,8 @@ bool isEnd()
             return false;
         }
     }
+
+    // Left cross checking
 
     xCount = 0;
     oCount = 0;
