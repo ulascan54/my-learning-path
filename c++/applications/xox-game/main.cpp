@@ -15,6 +15,7 @@ int main()
 {
     system("clear");
     bool game = true;
+    int n = 0;
     cout << "Welcome to Tic Tac Toe" << endl;
     Draw();
     while (game)
@@ -22,6 +23,12 @@ int main()
         Input();
         Draw();
         game = isEnd();
+        n++;
+        if (n == 9)
+        {
+            cout << "It is a draw !" << endl;
+            game = false;
+        }
     }
 
     return 0;
@@ -57,38 +64,128 @@ void TogglePlayer()
 void Input()
 {
     int a;
-    cout << "Enter the number of fields:" << endl;
+    cout << "It's '" << player << "' turn. "
+         << "Enter the number of fields:" << endl;
     cin >> a;
 
     switch (a)
     {
     case 1:
-        matrix[0][0] = player;
+        if (matrix[0][0] == '1')
+        {
+            matrix[0][0] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
         break;
 
     case 2:
-        matrix[0][1] = player;
+        if (matrix[0][1] == '2')
+        {
+            matrix[0][1] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 3:
-        matrix[0][2] = player;
+        if (matrix[0][2] == '3')
+        {
+            matrix[0][2] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 4:
-        matrix[1][0] = player;
+        if (matrix[1][0] == '4')
+        {
+            matrix[1][0] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 5:
-        matrix[1][1] = player;
+        if (matrix[1][1] == '5')
+        {
+            matrix[1][1] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 6:
-        matrix[1][2] = player;
+        if (matrix[1][2] == '6')
+        {
+            matrix[1][2] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 7:
-        matrix[2][0] = player;
+        if (matrix[2][0] == '7')
+        {
+            matrix[2][0] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 8:
-        matrix[2][1] = player;
+        if (matrix[2][1] == '8')
+        {
+            matrix[2][1] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
     case 9:
-        matrix[2][2] = player;
+        if (matrix[2][2] == '9')
+        {
+            matrix[2][2] = player;
+            break;
+        }
+        else
+        {
+            cout << "This field is already using." << endl;
+            Input();
+        }
+
         break;
 
     default:
