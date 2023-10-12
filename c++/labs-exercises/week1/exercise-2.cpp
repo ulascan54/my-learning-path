@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     string text;
-    cout << "Enter text to check is it is palidrome?" << endl;
+    cout << "Enter text to check is it palidrome?" << endl;
     cin >> text;
 
     int textSize = text.length() - 1;

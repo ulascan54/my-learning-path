@@ -29,10 +29,10 @@ int main()
             minIndex = i;
         }
     }
-    cout << "best eaten person:" << endl;
+    cout << "who eats the most pancakes:" << endl;
     cout << names[maxIndex] << pankes[maxIndex] << endl;
 
-    cout << "worst eaten person:" << endl;
+    cout << "who eats the least amount of pancakes:" << endl;
     cout << names[minIndex] << pankes[minIndex] << endl;
     string name1, name2;
     cout << "dou wantto compare people just write the names" << endl;

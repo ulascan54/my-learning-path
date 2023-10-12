@@ -22,7 +22,7 @@ int main()
         countEmpty = 0;
 
         cout << "---------------------------" << endl;
-        cout << "Aviable tickets" << endl;
+        cout << "Available tickets" << endl;
         cout << "---------------------------" << endl;
         for (int i = 0; i < 10; i++)
         {
@@ -128,7 +128,7 @@ int main()
         }
         else
         {
-            cout << "Type is not defined error!." << endl;
+            cout << "error! try again." << endl;
         }
 
         for (int i = 0; i < 10; i++)
