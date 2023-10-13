@@ -18,7 +18,7 @@ int main()
 
     x %= 2;
 
-    printf("%f", z);
+    printf("%d", x);
 
     return 0;
 }
