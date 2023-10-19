@@ -3,16 +3,7 @@ Bir sayının faktöriyelini (n!) hesaplayan bir C programı yazın. Kullanıcı
 */
 
 #include <stdio.h>
-
-int calcFaktoriel(int n)
-{
-    if (n == 1)
-    {
-        return 1;
-    }
-    return n * calcFaktoriel(n - 1);
-}
-
+int calcFaktoriel(int);
 int main(int argc, char const *argv[])
 {
     int n;
@@ -21,4 +12,12 @@ int main(int argc, char const *argv[])
     int result = calcFaktoriel(n);
     printf("%d", result);
     return 0;
+}
+int calcFaktoriel(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    return n * calcFaktoriel(n - 1);
 }
