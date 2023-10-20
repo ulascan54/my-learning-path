@@ -1,53 +1,49 @@
 #include "./Bank.hpp"
 #include <iostream>
 using namespace std;
-bool Bank::findAccount(string name, string password)
+
+int Bank::findAccount(string name, string password)
 {
-    vector<Account>::iterator iter;
-    iter = this->accounts.begin();
-    for (; iter < this->accounts.end(); iter++)
+    for (int i = 0; i < this->accounts.size(); i++)
     {
-        if ((*iter).getName() == name && (*iter).getPass() == password)
+        if (this->accounts[i].getName() == name && this->accounts[i].getPass() == password)
         {
-            return true;
+            return i;
         }
     }
-    return false;
+
+    return -1;
 };
 
 void Bank::createAccount(string name, string password, double balance)
 {
-    if (!Bank::findAccount(name, password))
+    if (Bank::findAccount(name, password) != -1)
     {
-        this->accounts.push_back(Account(name, password, balance));
-        cout << "Account created" << endl;
+        cout << "Already exist!" << endl;
     }
     else
     {
-        cout << "Already exist!" << endl;
+        this->accounts.push_back(Account(name, password, balance));
+        cout << "--Account created--" << endl;
     }
 }
 
 void Bank::deleteAccount(string name, string password)
 {
-    if (Bank::findAccount(name, password) == true)
+    if (Bank::findAccount(name, password) == -1)
     {
         cout << "There are no mach any account" << endl;
     }
     else
     {
-        vector<Account>::iterator iter = this->accounts.begin();
-        for (; iter < this->accounts.end(); iter++)
-        {
-            this->accounts.erase(iter);
-            cout << "Account deleted!" << endl;
-        }
+        this->accounts.erase(this->accounts.begin() + Bank::findAccount(name, password));
+        cout << "--Account deleted--" << endl;
     }
 }
 
 void Bank::deposit(string name, string password, double amount)
 {
-    if (Bank::findAccount(name, password) == true)
+    if (Bank::findAccount(name, password) == -1)
     {
         cout << "There are no mach any account" << endl;
     }
@@ -55,11 +51,8 @@ void Bank::deposit(string name, string password, double amount)
     {
         if (amount > 0)
         {
-            vector<Account>::iterator iter = this->accounts.begin();
-            for (; iter < this->accounts.end(); iter++)
-            {
-                iter->setBalance(iter->getBalance() + amount);
-            }
+            int accountIndex = Bank::findAccount(name, password);
+            this->accounts[accountIndex].setBalance(this->accounts[accountIndex].getBalance() + amount);
         }
         else
         {
@@ -70,7 +63,7 @@ void Bank::deposit(string name, string password, double amount)
 
 void Bank::withdraw(string name, string password, double amount)
 {
-    if (Bank::findAccount(name, password) == true)
+    if (Bank::findAccount(name, password) == -1)
     {
         cout << "There are no mach any account" << endl;
     }
@@ -78,15 +71,14 @@ void Bank::withdraw(string name, string password, double amount)
     {
         if (amount > 0)
         {
-            vector<Account>::iterator iter = this->accounts.begin();
-            for (; iter < this->accounts.end(); iter++)
+            int accountIndex = Bank::findAccount(name, password);
+            if (this->accounts[accountIndex].getBalance() > amount)
             {
-                if (iter->getBalance() - amount <= 0)
-                {
-                    iter->setBalance(iter->getBalance() - amount);
-                }
-                else
-                    cout << "Yetersiz bakiye" << endl;
+                this->accounts[accountIndex].setBalance(this->accounts[accountIndex].getBalance() - amount);
+            }
+            else
+            {
+                cout << "You don't have enough money" << endl;
             }
         }
         else
@@ -98,34 +90,23 @@ void Bank::withdraw(string name, string password, double amount)
 
 void Bank::getBalance(string name, string password)
 {
-    if (Bank::findAccount(name, password))
+    if (Bank::findAccount(name, password) != -1)
     {
-        vector<Account>::iterator iter = this->accounts.end();
-        for (; iter < this->accounts.end(); iter++)
-        {
-            cout << "noluyo" << endl;
-            cout << "Balance: " << (*iter).getBalance() << endl;
-        }
+        int accountsIndex = Bank::findAccount(name, password);
+        cout << this->accounts[accountsIndex].getName() << "'s balance: " << this->accounts[accountsIndex].getBalance() << endl;
     }
     else
     {
         cout << "There are no mach any account" << endl;
     }
 }
-void Bank::printDatabase(string name, string password)
+void Bank::printDatabase()
 {
-    if (Bank::findAccount(name, password))
+    for (int i = 0; i < this->accounts.size(); i++)
     {
-        cout << "There are no mach any account" << endl;
-    }
-    else
-    {
-        vector<Account>::iterator iter = this->accounts.end();
-        for (; iter < this->accounts.end(); iter++)
-        {
-            cout << "Name: " << iter->getName() << endl;
-            cout << "Password: " << iter->getPass() << endl;
-            cout << "Balance: " << iter->getName() << endl;
-        }
+        cout << "******************************" << endl;
+        cout << i + 1 << ". Member name: " << this->accounts[i].getName() << endl;
+        cout << i + 1 << ". Member name: " << this->accounts[i].getPass() << endl;
+        cout << i + 1 << ". Member name: " << this->accounts[i].getBalance() << endl;
     }
 }
