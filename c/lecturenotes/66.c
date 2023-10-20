@@ -41,13 +41,36 @@ int to_integer(char *p)
 }
 
 // convert an integer to a string
-void to_string(int n, char *p)
+char *to_string(int n)
 {
+    int x;
+    char p[50];
+
+    int i = 0;
+    while (n > 0)
+    {
+        x = n % 10;
+        char z = x + '0';
+        if (z >= '0' && z <= '9')
+        {
+            p[i] = z;
+        }
+        else
+        {
+            return "-1";
+        }
+        i++;
+        n /= 10;
+    }
+    return &p[0];
 }
 
 int main()
 {
-    char str1[50] = "12 3";
+    char str1[50] = "123";
+    char str2[50];
+    int a = 234;
     printf("%d\n", is_palindromic(str1 + 6));
     printf("\"%s\" is eqv to: %d\n", str1, to_integer(str1));
+    printf("%d is eqv to: \"%s\"\n", a, to_string(a));
 }
