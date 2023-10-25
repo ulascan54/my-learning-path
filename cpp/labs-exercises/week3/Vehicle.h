@@ -18,7 +18,11 @@ public:
     virtual ~Vehicle() {}                 // Virtual destructor
 
     // Getter for license plate
+    std::string getLicensePlate() const;
     // Getter for model
+    std::string getModel() const;
     // Getter for year
+    int getYear() const;
     // Getter for mileage
+    double getMileage() const;
 };

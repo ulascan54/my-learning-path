@@ -22,10 +22,13 @@ int main()
     serviceCenter.registerVehicle(myTruck);
 
     // Perform services on the vehicles
-    std::vector<std::string> partsChangedForCar = {"Oil filter", "Brake pads"};
+    std::vector<std::string> partsChangedForCar;
+    partsChangedForCar.push_back("Oil filter");
+    partsChangedForCar.push_back("Brake pads");
     serviceCenter.performService(myCar, "2023-10-21", partsChangedForCar);
 
-    std::vector<std::string> partsChangedForTruck = {"Windshield wipers"};
+    std::vector<std::string> partsChangedForTruck;
+    partsChangedForTruck.push_back("Windshield wipers");
     serviceCenter.performService(myTruck, "2023-10-22", partsChangedForTruck);
 
     // Display service history

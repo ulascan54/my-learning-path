@@ -12,6 +12,8 @@ public:
         : Vehicle(license, mod, yr, miles), maxCargoWeight(maxCargo) {}
 
     // Getter for max cargo weight
+    double getMaxCargoWeight() const;
+
     void displayInfo() const override;
 };
 

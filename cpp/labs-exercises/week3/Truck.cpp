@@ -1,4 +1,4 @@
-#include "Truck.h"
+#include "./Truck.h"
 #include <iostream>
 
 void Truck::displayInfo() const
@@ -8,4 +8,9 @@ void Truck::displayInfo() const
               << "Model: " << model << "\n"
               << "Year: " << year << "\n"
               << "Mileage: " << mileage << " miles\n";
+}
+
+double Truck::getMaxCargoWeight() const
+{
+    return maxCargoWeight;
 }
