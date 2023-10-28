@@ -21,13 +21,14 @@ private:
     string msj;
 };
 
+template <class T>
 class DynamicArray
 {
 public:
     DynamicArray()
     {
         m_capacity = 5;
-        m_data = new int[m_capacity];
+        m_data = new T[m_capacity];
         m_size = 0;
     }
 
@@ -44,7 +45,7 @@ public:
     void grow()
     {
         m_capacity = m_capacity * 2;
-        int *getNewArr = new int[m_capacity];
+        T *getNewArr = new T[m_capacity];
         for (int i = 0; i < m_size; i++)
         {
             getNewArr[i] = m_data[i];
@@ -70,7 +71,7 @@ public:
         }
     }
 
-    void push_back(int n)
+    void push_back(const T &n)
     {
         // if (m_size >= m_capacity)
         //     grow();
@@ -79,7 +80,7 @@ public:
         at(m_size, n);
     }
 
-    void at(int index, int n)
+    void at(int index, const T &n)
     {
         if (index >= 0 && index <= m_size)
         {
@@ -96,7 +97,7 @@ public:
         }
     }
 
-    int getItemByIndex(int i) const
+    const T &getItemByIndex(int i) const
     {
         if (i < 0 || i > m_size)
             throw CustomError("getItemByIndex");
@@ -131,21 +132,39 @@ public:
 private:
     int m_size;
     int m_capacity;
-    int *m_data;
+    T *m_data;
+};
+
+class Number
+{
+public:
+    Number()
+    {
+        cout << "Number()" << endl;
+    }
+    Number(const Number &n)
+    {
+        cout << "Number(const Number& n)" << endl;
+    }
 };
 
 int main()
 {
+    system("clear");
+
+    DynamicArray<Number> arr;
+    cout << "---" << endl;
+    Number s;
+    Number s2 = s; // atama kurucusu
     try
     {
-        DynamicArray arr;
+        DynamicArray<int> arr;
         int n;
         int index;
         bool isTrue = true;
 
         while (isTrue)
         {
-            system("clear");
             cout << arr;
             cout << "1.sona ekle" << endl;
             cout << "2.araya ekle" << endl;
