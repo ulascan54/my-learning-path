@@ -5,6 +5,8 @@
 int main()
 {
     LinkedList<int> *list = new LinkedList<int>();
+    list->eraese();
+
     list->add(20);
     list->add(30);
     list->add(40);
@@ -12,6 +14,11 @@ int main()
     list->add(340);
     list->add(420);
     list->display();
+    list->eraese();
+    list->eraese();
+    list->eraese();
+    list->display();
+
     delete list;
 
     LinkedList<string> *list2 = new LinkedList<string>();

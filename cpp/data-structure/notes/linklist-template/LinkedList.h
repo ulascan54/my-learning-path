@@ -29,12 +29,15 @@ public:
             head = generateLink;
             return;
         }
+        Link<T> *iterator = getLastElement();
+        iterator->next = generateLink;
+    }
+    Link<T> *getLastElement()
+    {
         Link<T> *iterator = head;
         while (iterator->next != 0)
-        {
             iterator = iterator->next;
-        }
-        iterator->next = generateLink;
+        return iterator;
     }
     void display()
     {
@@ -48,6 +51,27 @@ public:
             iterator = iterator->next;
         }
         cout << endl;
+    }
+    void eraese()
+    {
+        if (head == 0)
+            return;
+        if (head->next == 0)
+        {
+            delete head;
+            head = 0;
+            return;
+        }
+        Link<T> *iterator = getElementBeforeLast();
+        delete iterator->next;
+        iterator->next = 0;
+    }
+    Link<T> *getElementBeforeLast()
+    {
+        Link<T> *iterator = head;
+        while (iterator->next->next != 0)
+            iterator = iterator->next;
+        return iterator;
     }
 
 private:
