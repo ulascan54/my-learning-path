@@ -192,7 +192,7 @@ public:
             throw "Error: erase not working!";
     }
 
-    void erase(int first, int last) // by index
+    void erase(int first, int last) // multiple erase by index
     {
         T *tmp = new T[cap];
         int x = 0;
@@ -208,6 +208,18 @@ public:
         delete[] data;
         data = tmp;
         shrink();
+    }
+
+    void erase(const T *first, const T *last) // multiple erase by pointers
+    {
+        int f = first - begin();
+        int l = last - begin();
+
+        while (f != (l + 1))
+        {
+            erase(f + begin());
+            l--;
+        }
     }
 };
 
@@ -228,6 +240,11 @@ int main()
     v.push_back(80);
     v.printVector();
     v.erase(1, 3);
+    v.printVector();
+    v.push_back(20);
+    v.push_back(80);
+    v.printVector();
+    v.erase(&v[0], &v[2]);
     v.printVector();
 
     return 0;
