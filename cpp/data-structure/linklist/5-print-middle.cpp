@@ -43,6 +43,17 @@ public:
         }
         cout << endl;
     }
+    void print_middle()
+    {
+        Node *fast = begin();
+        Node *slow = begin();
+        while (fast != NULL && fast->next != NULL)
+        {
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        cout << slow->data << endl;
+    }
 };
 
 int main()
@@ -52,8 +63,10 @@ int main()
     l.push_back(6);
     l.push_back(7);
     l.push_back(8);
+    l.push_back(9);
     l.display();
-    cout << l.isEmpty();
+    cout << l.isEmpty() << endl;
+    l.print_middle();
 
     return 0;
 }
