@@ -74,18 +74,18 @@ public:
         }
         return head->data + sum_of_nodes(head->next);
     }
+    void push_front(int data)
+    {
+        Node *newElement = new Node(data);
+        newElement->next = root;
+        root = newElement;
+    }
 };
 
 int main()
 {
     list l;
-    l.push_back(8);
-    l.push_back(9);
-    l.display();
-    cout << l.isEmpty() << endl;
-    l.print_middle();
-    cout << l.find_element_count(5) << endl;
-    cout << l.sum_of_nodes(l.begin()) << endl;
+    l.push_front(8);
 
     l.display();
 
