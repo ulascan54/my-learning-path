@@ -13,6 +13,14 @@ class list
 {
     Node *root;
     Node *tail;
+    Node *findPrev(Node *pos)
+    {
+        Node *tmp = root;
+        Node *stop = tail->next;
+        while (tmp != stop && tmp->next != pos)
+            tmp = tmp->next;
+        return tmp;
+    }
 
 public:
     list()
@@ -106,29 +114,12 @@ public:
     }
     void pop_back()
     {
-        if (isEmpty())
-            return;
-        if (begin()->next == end())
-        {
-            delete root;
-            root = NULL;
-            return;
-        }
-        Node *tmp = begin();
-        while (tmp->next->next != end())
-            tmp = tmp->next;
-        delete tmp->next;
-        tmp->next = NULL;
+        erase(end());
     }
 
     void pop_front()
     {
-        if (isEmpty())
-            return;
-        Node *ditem = root;
-        root = root->next;
-        delete ditem;
-        ditem = NULL;
+        erase(begin());
     }
     void insert(Node *pos, const int &value)
     {
@@ -139,9 +130,9 @@ public:
         }
         else
         {
-            Node *tmp = root;
-            while (tmp->next != pos)
-                tmp = tmp->next;
+            Node *tmp = findPrev(pos);
+            if (tmp == end())
+                return;
             tmp->next = new Node(value, tmp->next);
         }
     }
@@ -154,15 +145,15 @@ public:
         if (pos == end() || pos == tail)
         {
             pos = tail;
-            while (prev->next != pos)
-                prev = prev->next;
+            prev = findPrev(pos);
             prev->next = pos->next;
             tail = prev;
         }
         else
         {
-            while (prev->next != pos)
-                prev = prev->next;
+            prev = findPrev(pos);
+            if (pos == end())
+                return;
             prev->next = pos->next;
         }
         delete pos;
@@ -173,28 +164,15 @@ int main()
 {
     list l;
     cout << l.isEmpty() << endl;
-    l.push_front(5);
     l.push_back(15);
-    l.push_back(1);
-    l.push_back(2);
-    l.push_back(3);
-    l.push_front(25);
-    l.display();
-
-    cout << l.front() << endl;
-    cout << l.back() << endl;
-    cout << "****" << endl;
-    l.display();
+    l.push_back(25);
+    l.push_back(35);
+    l.push_back(45);
+    l.push_front(333);
     l.erase(l.begin());
-    l.display();
     l.erase(l.end());
+    l.insert(l.begin()->next, 2000);
+    l.erase(l.begin()->next);
     l.display();
-    l.erase(l.begin());
-    l.erase(l.begin());
-    l.erase(l.begin());
-    l.erase(l.begin());
-    l.erase(l.begin());
-    l.display();
-
     return 0;
 }

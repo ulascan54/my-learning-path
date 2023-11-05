@@ -13,6 +13,14 @@ class list
 {
     Node *root;
     Node *tail;
+    Node *findPrev(Node *pos)
+    {
+        Node *tmp = root;
+        Node *stop = tail->next;
+        while (tmp != stop && tmp->next != pos)
+            tmp = tmp->next;
+        return tmp;
+    }
 
 public:
     list()
@@ -106,29 +114,12 @@ public:
     }
     void pop_back()
     {
-        if (isEmpty())
-            return;
-        if (begin()->next == end())
-        {
-            delete root;
-            root = NULL;
-            return;
-        }
-        Node *tmp = begin();
-        while (tmp->next->next != end())
-            tmp = tmp->next;
-        delete tmp->next;
-        tmp->next = NULL;
+        erase(end());
     }
 
     void pop_front()
     {
-        if (isEmpty())
-            return;
-        Node *ditem = root;
-        root = root->next;
-        delete ditem;
-        ditem = NULL;
+        erase(begin());
     }
     void insert(Node *pos, const int &value)
     {
