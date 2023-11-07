@@ -1,4 +1,6 @@
 #include "Ring.h"
+#include "Boxer.h"
+#include "CustomError.h"
 #include <ctime>
 
 int Ring::findBoxer(string name)
