@@ -5,6 +5,8 @@ class StackNode
 {
     int data;
     StackNode *next;
+
+public:
     StackNode(const int &data = 0, StackNode *next = NULL) : data(data), next(next){};
 };
 
@@ -27,11 +29,18 @@ public:
         // return root == NULL;
         return begin() == end();
     }
+    void push(const int &value)
+    {
+        StackNode *tmp = new StackNode(value, root);
+        root = tmp;
+    }
 };
 
 int main()
 {
     Stack s;
+    cout << s.isEmpty() << endl;
+    s.push(10);
     cout << s.isEmpty() << endl;
     return 0;
 }
