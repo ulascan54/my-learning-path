@@ -43,6 +43,15 @@ public:
             cout << tmp->data << " ";
             tmp = tmp->next;
         }
+        cout << endl;
+    }
+    void pop()
+    {
+        if (isEmpty())
+            return;
+        StackNode *tmp = root;
+        root = root->next;
+        delete tmp;
     }
 };
 
@@ -54,6 +63,8 @@ int main()
     s.push(20);
     s.push(30);
     cout << s.isEmpty() << endl;
+    s.display();
+    s.pop();
     s.display();
     return 0;
 }
