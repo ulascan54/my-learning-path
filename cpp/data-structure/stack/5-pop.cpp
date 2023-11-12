@@ -12,9 +12,10 @@ public:
 class Stack
 {
     StackNode *root;
+    int length;
 
 public:
-    Stack() : root(NULL){};
+    Stack() : root(NULL), length(0){};
     StackNode *begin() const
     {
         return root;
@@ -23,6 +24,12 @@ public:
     {
         return NULL;
     }
+
+    int size()
+    {
+        return length;
+    }
+
     bool isEmpty() const
     {
         // return root == NULL;
@@ -32,6 +39,7 @@ public:
     {
         StackNode *tmp = new StackNode(value, root);
         root = tmp;
+        length++;
     }
     void display() const
     {
@@ -52,6 +60,7 @@ public:
         StackNode *tmp = root;
         root = root->next;
         delete tmp;
+        length--;
     }
 };
 
@@ -59,12 +68,17 @@ int main()
 {
     Stack s;
     cout << s.isEmpty() << endl;
+    cout << s.size() << endl;
     s.push(10);
     s.push(20);
     s.push(30);
+    cout << s.size() << endl;
+
     cout << s.isEmpty() << endl;
     s.display();
     s.pop();
+    cout << s.size() << endl;
+
     s.display();
     return 0;
 }

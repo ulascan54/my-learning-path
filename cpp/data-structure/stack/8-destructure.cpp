@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 class StackNode
 {
 public:
@@ -12,9 +11,15 @@ public:
 class Stack
 {
     StackNode *root;
+    int length;
+    void makeEmpty()
+    {
+        while (!isEmpty())
+            pop();
+    }
 
 public:
-    Stack() : root(NULL){};
+    Stack() : root(NULL), length(0){};
     StackNode *begin() const
     {
         return root;
@@ -23,6 +28,17 @@ public:
     {
         return NULL;
     }
+    ~Stack()
+    {
+        makeEmpty();
+    }
+
+    int
+    size()
+    {
+        return length;
+    }
+
     bool isEmpty() const
     {
         // return root == NULL;
@@ -32,6 +48,7 @@ public:
     {
         StackNode *tmp = new StackNode(value, root);
         root = tmp;
+        length++;
     }
     void display() const
     {
@@ -52,15 +69,7 @@ public:
         StackNode *tmp = root;
         root = root->next;
         delete tmp;
-    }
-    int top() const
-    {
-        if (isEmpty())
-        {
-            throw runtime_error("error");
-        }
-
-        return begin()->data;
+        length--;
     }
 };
 
@@ -71,10 +80,9 @@ int main()
     s.push(10);
     s.push(20);
     s.push(30);
+
     cout << s.isEmpty() << endl;
-    s.display();
-    s.pop();
-    s.display();
-    cout << s.top() << endl;
+    s.makeEmpty();
+    cout << s.isEmpty() << endl;
     return 0;
 }
