@@ -68,6 +68,25 @@ void List::deleteElement()
     }
 }
 
+void List::deleteElement(int index)
+{
+    Node *tmp = getNode(index);
+    if (!tmp)
+        return;
+    else
+    {
+        Node *tmpNext = tmp->next;
+        Node *tmpPrev = tmp->prev;
+        if (tmpNext)
+            tmpNext->prev = tmpPrev;
+        if (tmpPrev)
+            tmpPrev->next = tmpNext;
+        else
+            head = tmpNext;
+        delete tmp;
+    }
+}
+
 List::~List()
 {
     Node *tmp = head;
@@ -88,5 +107,41 @@ int List::getHeadValue()
     else
     {
         throw std::out_of_range("List::getHeadValue(): This List is empty right now!");
+    }
+}
+
+Node *List::getNode(int index)
+{
+
+    Node *tmp = head;
+    while (index >= 0 && tmp != NULL)
+    {
+        if (index == 0)
+            return tmp;
+
+        tmp = tmp->next;
+        index--;
+    }
+    return NULL;
+}
+
+void List::addToFront(int index, int data)
+{
+    Node *tmp = getNode(index);
+    if (tmp)
+    {
+        Node *tmpPrev = tmp->prev;
+        Node *item = new Node(data);
+        tmp->prev = item;
+        item->next = tmp;
+        item->prev = tmpPrev;
+        if (tmpPrev)
+        {
+            tmpPrev->next = item;
+        }
+        else
+        {
+            head = item;
+        }
     }
 }
