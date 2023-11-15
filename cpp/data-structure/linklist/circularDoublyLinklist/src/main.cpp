@@ -11,15 +11,8 @@ int main()
     cout << l << endl;
     l.deleteItem();
     cout << l << endl;
-    l.deleteItem();
+    l.deleteItem(1);
     cout << l << endl;
-    l.deleteItem();
-    cout << l << endl;
-    l.deleteItem();
-    cout << l << endl;
-    l.deleteItem();
-    cout << l << endl;
-    l.deleteItem();
-    cout << l << endl;
+
     return 0;
 }

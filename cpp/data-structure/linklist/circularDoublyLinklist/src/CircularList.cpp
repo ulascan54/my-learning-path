@@ -21,6 +21,23 @@ Node *CircularList::getNodeByIndex(int index)
     }
 }
 
+void CircularList::addNewItem(int data, int index)
+{
+    Node *tmp = getNodeByIndex(index);
+    if (tmp)
+    {
+        Node *prev = tmp->prev;
+        Node *item = new Node(data);
+        if (tmp == head)
+            head = item;
+        prev->next = item;
+        item->next = tmp;
+        item->prev = prev;
+        tmp->prev = item;
+        length++;
+    }
+}
+
 void CircularList::addNewItem(int data)
 {
     Node *newElement = new Node(data);
@@ -49,6 +66,31 @@ CircularList::~CircularList()
 {
     cout << "helo" << endl;
 }
+
+void CircularList::deleteItem(int index)
+{
+    Node *tmp = getNodeByIndex(index);
+    if (tmp)
+    {
+        Node *prev = tmp->prev;
+        Node *next = tmp->next;
+        prev->next = next;
+        next->prev = prev;
+
+        if (head->prev = head)
+            head = 0;
+
+        if (tmp == head)
+            head = next;
+
+        delete tmp;
+        length--;
+    }
+    else
+    {
+        return;
+    }
+};
 
 void CircularList::deleteItem()
 {

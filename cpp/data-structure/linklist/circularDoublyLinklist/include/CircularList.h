@@ -13,7 +13,9 @@ public:
     CircularList();
     ~CircularList();
     void addNewItem(int data);
+    void addNewItem(int data, int index);
     void deleteItem();
+    void deleteItem(int index);
     Node *getNodeByIndex(int index);
 
     friend ostream &operator<<(ostream &os, CircularList &list);
