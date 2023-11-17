@@ -77,7 +77,7 @@ void CircularList::deleteItem(int index)
         prev->next = next;
         next->prev = prev;
 
-        if (head->prev = head)
+        if (head->prev == head)
             head = 0;
 
         if (tmp == head)
