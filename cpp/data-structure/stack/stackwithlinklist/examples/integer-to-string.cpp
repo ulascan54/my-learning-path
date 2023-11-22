@@ -104,5 +104,5 @@ string integerToString(int a, int base)
 int main()
 {
     cout << integerToString(123) << endl;
-    cout << integerToString(8, 4) << endl;
+    cout << integerToString(889, 16) << endl;
 }
