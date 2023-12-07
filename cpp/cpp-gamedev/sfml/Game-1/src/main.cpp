@@ -120,7 +120,7 @@ int main()
             window.draw(shape);
 
             // window.draw(rectangle);
-            sf::sleep(sf::milliseconds(10));
+            // sf::sleep(sf::milliseconds(10));
             window.display();
 
             // float time = clock.restart().asSeconds();
